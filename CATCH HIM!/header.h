@@ -32,8 +32,7 @@ char l[10][50];
 char sym[10] = {'D', 'S', 'B', 'T'};
 PLAYER a[3];
 char map[105][105], s[105][105];
-int i, t, mp, p1 = 0, p2 = 0, boy_i, boy_j;
-char dir;
+int t, mp, p1 = 0, p2 = 0, boy_i, boy_j;
 int board_wid = 0, board_hi = 0;
 
 /* forward declarations for cross-file calls */
@@ -42,7 +41,7 @@ int  random_itemdrop(void);
 int  select_item(int n, char temp[105][105]);
 void use_item(char temp[105][105], char s, int n);
 void collect_item(char map[105][105], char s[105][105], int i, int j, int n);
-void replace_item(char symbol);
+void replace_item(int player, char symbol);
 void oboard(char s[105][105], int *board_hi, int *board_wid);
 void victory(int n);
 

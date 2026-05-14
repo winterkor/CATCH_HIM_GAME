@@ -2,7 +2,11 @@
 void move_pla(int n, char temp[105][105], int *i, int *j)
 {
     char dir;
+    if (a[n].shield > 0)
+        a[n].shield--;
     printf("\n\nPlayer%d-%s's turn\n", n + 1, a[n].name);
+    if (a[n].shield > 0)
+        printf("Shield active: %d turn(s) left\n", a[n].shield);
     printf("Press the ASWD to move or space to destroy block\n");
     dir = getch(); // input direction
     //    printf("dir = %d\n",dir);

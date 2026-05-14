@@ -140,22 +140,24 @@ void collect_item(char map[105][105], char s[105][105], int i, int j, int n)
             a[n].item3 = sym[s[i][j] - '4'];
         else
         {
-            replace_item(sym[s[i][j] - '4']);
+            replace_item(n, sym[s[i][j] - '4']);
         }
         s[i][j] = '.';
         Sleep(1000);
         // do more in case full inventory
     }
 }
-void replace_item(char symbol)
+void replace_item(int player, char symbol)
 {
-    int n;
-    printf("Select to replace the item :");
-    scanf("%d", &n);
-    if (n == 1)
-        a[n].item1 = symbol;
-    else if (n == 2)
-        a[n].item2 = symbol;
-    else if (n == 3)
-        a[n].item3 = symbol;
+    int slot;
+    printf("Select slot to replace (1/2/3, anything else = discard): ");
+    scanf("%d", &slot);
+    if (slot == 1)
+        a[player].item1 = symbol;
+    else if (slot == 2)
+        a[player].item2 = symbol;
+    else if (slot == 3)
+        a[player].item3 = symbol;
+    else
+        printf("Item discarded.\n");
 }
