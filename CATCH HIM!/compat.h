@@ -16,8 +16,7 @@
       int ch;
       tcgetattr(STDIN_FILENO, &oldt);
       newt = oldt;
-      newt.c_iflag &= ~(ICRNL);          /* don't translate CR -> NL */
-      newt.c_lflag &= ~(ICANON | ECHO);
+      newt.c_lflag &= ~(ICANON | ECHO);  /* raw char read, no echo */
       tcsetattr(STDIN_FILENO, TCSANOW, &newt);
       ch = getchar();
       tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
