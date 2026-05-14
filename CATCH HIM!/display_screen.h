@@ -1,4 +1,4 @@
-#include"header.h"
+#include "header.h"
 
 int start_display()
 {
@@ -11,14 +11,17 @@ int start_display()
     printf("\t\tPress 1 : Start Game\n");
     printf("\t\tPress 2 : How to play\n");
     printf("\t\t");
-    restart : c=getch();
-    if(c!=49&&c!=50){
+restart:
+    c = getch();
+    if (c != 49 && c != 50)
+    {
         goto restart;
     }
     system(clear);
     return c;
 }
-void gamerule(){
+void gamerule()
+{
     printf("RULE\n");
     printf("This game is to catch a boy that will change");
     printf("his place after you get to him\n");
@@ -35,13 +38,14 @@ void gamerule(){
     system(command);
     system(clear);
 }
-void countdown(){
+void countdown()
+{
     printf("\t\t____\n");
     printf("\t\t    |\n");
     printf("\t\t____|\n");
     printf("\t\t    |\n");
     printf("\t\t____|\n");
-    Sleep(1000);//wait for 1 second
+    Sleep(1000); // wait for 1 second
     system(clear);
     printf("\t\t ____\n");
     printf("\t\t     |\n");
@@ -58,8 +62,9 @@ void countdown(){
     Sleep(1000);
     system(clear);
 }
-void victory(int n){
+void victory(int n)
+{
     system(clear);
-    printf("%s wins\n",a[n].name);
+    printf("%s wins\n", a[n].name);
     printf("CONGRATULATIONS!\n");
 }

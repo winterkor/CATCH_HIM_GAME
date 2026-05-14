@@ -1,0 +1,14 @@
+# build artifacts
+catch_him
+*.o
+*.exe
+build/
+
+# editor / IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# VSCode "run code" temp file
+tempCodeRunnerFile.c
