@@ -2,6 +2,8 @@
 
 int main()
 {
+    terminal_reset();
+    atexit(terminal_reset);
     srand((unsigned)time(NULL));
     // initialize item
     strcpy(l[4], "Double");
