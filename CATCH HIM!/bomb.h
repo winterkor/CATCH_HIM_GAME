@@ -57,7 +57,7 @@ int bomb(int n, char temp[105][105], int *i, int *j, char s[105][105])
         Sleep(1000);
         system(clear);
         oboard(temp, &board_hi, &board_wid);
-        bomb(n, temp, i, j, s);
+        return bomb(n, temp, i, j, s);
     }
     return 0;
 }

@@ -16,10 +16,12 @@
       int ch;
       tcgetattr(STDIN_FILENO, &oldt);
       newt = oldt;
+      newt.c_iflag &= ~(ICRNL);          /* don't translate CR -> NL */
       newt.c_lflag &= ~(ICANON | ECHO);
       tcsetattr(STDIN_FILENO, TCSANOW, &newt);
       ch = getchar();
       tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+      if (ch == '\n') ch = '\r';         /* normalize Enter to CR (== ENTER macro) */
       return ch;
   }
 

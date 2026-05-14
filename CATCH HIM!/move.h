@@ -71,7 +71,6 @@ void boy_run(char temp[105][105], int *m, int *n)
     int g;
     int dx[8] = {-1, -1, -1, 1, 1, 1, 0, 0}, dy[8] = {0, -1, 1, 0, 1, -1, 1, -1};
     g = rand() % 8;
-    printf("%d", g);
     if (temp[*m + dx[g]][*n + dy[g]] != '#' && temp[*m + dx[g]][*n + dy[g]] != '*' && temp[*m + dx[g]][*n + dy[g]] != '1' && temp[*m + dx[g]][*n + dy[g]] != '2')
     {
         temp[*m + dx[g]][*n + dy[g]] = '?';

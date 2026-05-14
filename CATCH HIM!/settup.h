@@ -23,6 +23,7 @@ void createboard(char temp[105][105], int *board_wid, int *board_hi, int mp, cha
 {
     FILE *fp = NULL;
     int i, j;
+    line = 0;
     if (mp == 1)
         fp = fopen("map1.txt", "r");
     else if (mp == 2)
@@ -40,8 +41,8 @@ void createboard(char temp[105][105], int *board_wid, int *board_hi, int mp, cha
     while (fgets(temp[line], *board_wid + 50, fp))
     {
         size_t len = strlen(temp[line]);
-        if (len > 0 && temp[line][len - 1] == '\n')
-            temp[line][len - 1] = '\0';
+        while (len > 0 && (temp[line][len - 1] == '\n' || temp[line][len - 1] == '\r'))
+            temp[line][--len] = '\0';
         line++;
     }
     //    printf("%d %d\n",*board_wid,*board_hi);

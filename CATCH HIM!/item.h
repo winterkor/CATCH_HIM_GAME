@@ -123,6 +123,7 @@ void use_item(char temp[105][105], char s, int n)
         printf("wait for a while...\n");
         Sleep(2000);
         system(clear);
+        oboard(temp, &board_hi, &board_wid);
         select_item(n, temp);
     }
 }
