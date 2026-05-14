@@ -7,10 +7,11 @@ int select_item(int n, char temp[105][105])
     do
     {
         oboard(temp, &board_hi, &board_wid);
-        printf("\nPLEASE SELECT ITEM: (select q to cancel)\n");
-        printf("1 : %c %s\n", a[n].item1, ar[tp]);
-        printf("2 : %c %s\n", a[n].item2, ar[thp]);
-        printf("3 : %c %s\n", a[n].item3, ar[fp]);
+        printf("\n%s===== INVENTORY =====%s\n", C_BOLD C_GREEN, C_RESET);
+        printf("w/s to navigate, ENTER to use, q to cancel\n");
+        printf("1 : [%c] %s\n", a[n].item1, ar[tp]);
+        printf("2 : [%c] %s\n", a[n].item2, ar[thp]);
+        printf("3 : [%c] %s\n", a[n].item3, ar[fp]);
         c = getch();
         system(clear);
         if (c == UP)

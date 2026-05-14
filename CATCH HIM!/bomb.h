@@ -4,7 +4,8 @@ int bomb(int n, char temp[105][105], int *i, int *j, char s[105][105])
     char a;
     char bom = 0;
     int r;
-    printf("Please select the direction to destroy that block (select q to cancel)\n");
+    printf("\n%s===== BOMB MODE =====%s\n", C_BOLD C_YELLOW, C_RESET);
+    printf("Pick direction to bomb (w/a/s/d), or q to cancel\n");
     r = random_itemdrop(); // random item when we destroy the box
     if (r == 3)
         a = 46;

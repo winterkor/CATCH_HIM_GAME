@@ -20,6 +20,28 @@
 #define ITEM  'e'
 #define QUIT  'q'
 
+/* ANSI color codes. Set ENABLE_COLOR to 0 to disable. */
+#define ENABLE_COLOR 1
+#if ENABLE_COLOR
+#define C_RESET   "\033[0m"
+#define C_BOLD    "\033[1m"
+#define C_DIM     "\033[2m"
+#define C_RED     "\033[91m"
+#define C_BLUE    "\033[94m"
+#define C_YELLOW  "\033[93m"
+#define C_GREEN   "\033[92m"
+#define C_CYAN    "\033[96m"
+#else
+#define C_RESET   ""
+#define C_BOLD    ""
+#define C_DIM     ""
+#define C_RED     ""
+#define C_BLUE    ""
+#define C_YELLOW  ""
+#define C_GREEN   ""
+#define C_CYAN    ""
+#endif
+
 typedef struct playerInfo {
     char item1, item2, item3;
     int score;

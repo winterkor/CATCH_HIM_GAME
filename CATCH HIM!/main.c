@@ -9,7 +9,7 @@ int main()
     strcpy(l[6], "Push Back");
     strcpy(l[7], "Triple");
     t = start_display(); // start game
-    if (t == 50)
+    if (t == '2')
     {
         gamerule(); // show game rule
     }

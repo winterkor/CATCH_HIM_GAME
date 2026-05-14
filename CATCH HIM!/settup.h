@@ -78,14 +78,85 @@ void createboard(char temp[105][105], int *board_wid, int *board_hi, int mp, cha
     //    Sleep(10000);
     fclose(fp);
 }
+static const char *cell_color(char c)
+{
+    switch (c) {
+        case '1': return C_BOLD C_RED;
+        case '2': return C_BOLD C_BLUE;
+        case '?': return C_BOLD C_YELLOW;
+        case 'D': case 'S': case 'B': case 'T': return C_GREEN;
+        case '#': return C_CYAN;
+        case '*': return C_DIM;
+        default:  return "";
+    }
+}
+
+static void print_item_slot(char it)
+{
+    if (it == '-')
+        printf("[-]");
+    else
+        printf("[%s%c%s]", C_GREEN, it, C_RESET);
+}
+
+static void print_hud_line(int line)
+{
+    switch (line) {
+        case 0:
+            printf("%s== Player 1: %s ==%s", C_BOLD C_RED, a[0].name, C_RESET);
+            break;
+        case 1:
+            printf("   Items: ");
+            print_item_slot(a[0].item1);
+            print_item_slot(a[0].item2);
+            print_item_slot(a[0].item3);
+            printf("  Shield: %d", a[0].shield);
+            break;
+        case 2:
+            printf("   Turns taken: %d", p1);
+            break;
+        case 3:
+            break;
+        case 4:
+            printf("%s== Player 2: %s ==%s", C_BOLD C_BLUE, a[1].name, C_RESET);
+            break;
+        case 5:
+            printf("   Items: ");
+            print_item_slot(a[1].item1);
+            print_item_slot(a[1].item2);
+            print_item_slot(a[1].item3);
+            printf("  Shield: %d", a[1].shield);
+            break;
+        case 6:
+            printf("   Turns taken: %d", p2);
+            break;
+        default: break;
+    }
+}
+
+#define HUD_ROWS 7
+
 void oboard(char s[105][105], int *board_hi, int *board_wid)
 {
-    for (int i = 0; i < *board_hi; i++)
+    int max_lines = (*board_hi > HUD_ROWS) ? *board_hi : HUD_ROWS;
+    for (int i = 0; i < max_lines; i++)
     {
-        for (int j = 0; j < *board_wid; j++)
-        {
-            printf("%c", s[i][j]);
+        if (i < *board_hi) {
+            for (int j = 0; j < *board_wid; j++) {
+                char c = s[i][j];
+                const char *col = cell_color(c);
+                if (col[0])
+                    printf("%s%c%s", col, c, C_RESET);
+                else
+                    printf("%c", c);
+            }
+        } else {
+            for (int j = 0; j < *board_wid; j++)
+                printf(" ");
         }
+        printf("   ");
+        if (i < HUD_ROWS)
+            print_hud_line(i);
         printf("\n");
     }
 }

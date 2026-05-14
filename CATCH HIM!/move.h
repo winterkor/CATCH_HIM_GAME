@@ -4,10 +4,15 @@ void move_pla(int n, char temp[105][105], int *i, int *j)
     char dir;
     if (a[n].shield > 0)
         a[n].shield--;
-    printf("\n\nPlayer%d-%s's turn\n", n + 1, a[n].name);
+    const char *who_color = (n == 0) ? C_BOLD C_RED : C_BOLD C_BLUE;
+    printf("\n");
+    printf("%s========================================%s\n", who_color, C_RESET);
+    printf("%s===  PLAYER %d - %s's TURN  ===%s\n", who_color, n + 1, a[n].name, C_RESET);
+    printf("%s========================================%s\n", who_color, C_RESET);
     if (a[n].shield > 0)
-        printf("Shield active: %d turn(s) left\n", a[n].shield);
-    printf("Press the ASWD to move or space to destroy block\n");
+        printf("%sShield active: %d turn(s) left%s\n", C_GREEN, a[n].shield, C_RESET);
+    printf("Controls: %sw/a/s/d%s move | %sspace%s bomb | %se%s inventory\n",
+           C_BOLD, C_RESET, C_BOLD, C_RESET, C_BOLD, C_RESET);
     dir = getch(); // input direction
     //    printf("dir = %d\n",dir);
     if (dir == DOWN && (temp[*i + 1][*j] != '*' && temp[*i + 1][*j] != '#'))
